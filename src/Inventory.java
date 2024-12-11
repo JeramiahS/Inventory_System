@@ -1,3 +1,4 @@
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.Random;
 
@@ -42,7 +43,7 @@ public class Inventory {
         String scrollName;
         int result;
         if(SPELL_SLOT[0] != null) {
-            System.out.println("ERROR! You need to drop a scroll from your inventory.");
+            System.out.println("ERROR! You need to cast/drop a scroll from your inventory.");
         }
         else {
             System.out.println("You will use your vast powers to conjure 1 of 6 spell scrolls.");
@@ -110,8 +111,13 @@ public class Inventory {
         System.out.println(CONSUMABLE_SLOTS[0] + " health potions" + CONSUMABLE_SLOTS[1] + " mana potions");
     }
 
-    public static void listSpells() {
-
+    public static void listSpell() {
+        if(SPELL_SLOT[0] == null) {
+            System.out.println("You do not have a spell equipped. Equip one by conjuring a scroll.");
+        }
+        else {
+            System.out.println("You have the " + SPELL_SLOT[0] + " scroll equipped.");
+        }
     }
 
     public static void listWeapons() {
