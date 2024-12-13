@@ -10,6 +10,10 @@ public class Inventory {
     private static final String[] SPELL_SLOT = {null};
     private static final String[] WEAPON_SLOTS= {null, null};
 
+    public Inventory() {
+
+    }
+
     public static void addConsumable() {
         int type;
         int quantity;
@@ -39,57 +43,9 @@ public class Inventory {
         }
     }
 
-    public static void addSpell() {
-        String scrollName;
-        int result;
-        if(SPELL_SLOT[0] != null) {
-            System.out.println("ERROR! You need to cast/drop a scroll from your inventory.");
-        }
-        else {
-            System.out.println("You will use your vast powers to conjure 1 of 6 spell scrolls.");
-            result = DICE_ROLL.nextInt(6);
-            if(result == 0) {
-                scrollName = "Fireball";
-                SPELL_SLOT[0] = scrollName;
-                System.out.println("You conjure the scroll to cast " + scrollName + ".");
-                System.out.println("On cast: Hurl a ball of fire at an area.");
-            }
-            else if(result == 1) {
-                scrollName = "Vicious Mockery";
-                SPELL_SLOT[0] = scrollName;
-                System.out.println("You conjure the scroll to cast " + scrollName + ".");
-                System.out.print("On successful cast: Demoralize a creature with a profoundly vile insult," );
-                System.out.println(" causing it to flee.");
-            }
-            else if(result == 2) {
-                scrollName = "Acid Splash";
-                SPELL_SLOT[0] = scrollName;
-                System.out.println("You conjure the scroll to cast " + scrollName + ".");
-                System.out.println("On cast: Caustic acid envelops an area. Reacting with almost everything it touches.");
-            }
-            else if(result == 3) {
-                scrollName = "Hideous Laughter";
-                SPELL_SLOT[0] = scrollName;
-                System.out.println("You conjure the scroll to cast " + scrollName + ".");
-                System.out.print("On successful cast: You tell a joke so funny the target creature can't help but");
-                System.out.println(" laugh so hard they fall to the ground, unable to defend themselves.");
-            }
-            else if(result == 4) {
-                scrollName = "Fog Cloud";
-                SPELL_SLOT[0] = scrollName;
-                System.out.println("You conjure the scroll to cast " + scrollName + ".");
-                System.out.println("On cast: Envelops an area in thick fog, completely obscuring vision.");
-            }
-            else {
-                scrollName = "Mage Armor";
-                SPELL_SLOT[0] = scrollName;
-                System.out.println("You conjure the scroll to cast " + scrollName + ".");
-                System.out.print("On cast: Grants you or any ally not wearing armor a spectral armor set.");
-                System.out.println(" Particularly effective against magical attacks.");
-            }
+    public static String conjureSpell(String spellName) {
 
-        }
-
+        return spellName;
     }
 
     public static void addWeapon() {
