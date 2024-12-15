@@ -1,3 +1,7 @@
+/*
+ * Rather than 
+ */
+
 import java.util.Scanner;
 import java.util.Random;
 
@@ -48,6 +52,7 @@ public class Inventory {
         else {
             System.out.println("You will use your vast powers to conjure 1 of 6 spell scrolls.");
             result = DICE_ROLL.nextInt(6);
+
             if(result == 0) {
                 scrollName = "Fireball";
                 SPELL_SLOT[0] = scrollName;
@@ -101,16 +106,52 @@ public class Inventory {
         System.out.println("2. Sword");
         System.out.println("3. Talisman");
         System.out.println("4. Sorcerer's Staff");
-
-
     }
 
     public static void droppConsumable() {
+        int potionSelector;
+        int quantity;
 
+        listConsumables();
+        System.out.println("Select the potion to drop:");
+        System.out.println("0. Health Potion");
+        System.out.println("1. Mana Potion");
+        potionSelector = SCANNER.nextInt();
+        System.out.println("Enter the amount to drop:");
+        quantity = SCANNER.nextInt();
+
+        if(potionSelector == 0) {
+            if(CONSUMABLE_SLOTS[0] == 0) {
+                System.out.println("ERROR! You don't have any healh potions in your inventory.");
+            }
+            else if(CONSUMABLE_SLOTS[0] < quantity) {
+                System.out.println("ERROR! You can only drop a maximum of " + CONSUMABLE_SLOTS[0] + " potion(s)!");
+            }
+            else {
+                CONSUMABLE_SLOTS[0] -= quantity;
+                System.out.println("You dropped " + quantity + "health potion(s).");
+            }
+        }
+        else {
+            if(CONSUMABLE_SLOTS[1] == 0) {
+
+                System.out.println("ERROR! You don't have any mana potions in your inventory.");
+            }
+            else if(CONSUMABLE_SLOTS[1] < quantity) {
+                System.out.println("ERROR! You can only drop a maximum of " + CONSUMABLE_SLOTS[0] + " potion(s)!");
+            }
+            else {
+                CONSUMABLE_SLOTS[1] -= quantity;
+                System.out.println("You dropped " + quantity + " mana potion(s).");
+            }
+        }
     }
 
     public static void dropSpell() {
 
+        if(SPELL_SLOT[0] == null) {
+            System.out.println("");
+        }
     }
 
     public static void dropWeapon() {
@@ -118,7 +159,7 @@ public class Inventory {
     }
 
     public static void listConsumables() {
-        System.out.println(CONSUMABLE_SLOTS[0] + " health potions" + CONSUMABLE_SLOTS[1] + " mana potions");
+        System.out.println("You have " + CONSUMABLE_SLOTS[0] + " health potions" + CONSUMABLE_SLOTS[1] + " mana potions");
     }
 
     public static void listSpell() {
