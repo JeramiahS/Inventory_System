@@ -1,5 +1,6 @@
 /*
- * Rather than 
+ * Rather than doing all of our work in the Main class, I encapsulated the code into this seperate class.
+ * The Main class will create an Inventory object and that object will use the methods within this Inventory class.
  */
 
 import java.util.Scanner;
@@ -17,6 +18,7 @@ public class Inventory {
     public static void addConsumable() {
         int type;
         int quantity;
+
         System.out.println(CONSUMABLE_SLOTS[0] + CONSUMABLE_SLOTS[1] + "/" + MAX_CONSUMABLES + " consumables used.");
         System.out.println("Please select the consumable:");
         System.out.println("0. Health Potion");
@@ -46,13 +48,13 @@ public class Inventory {
     public static void addSpell() {
         String scrollName;
         int result;
+
         if(SPELL_SLOT[0] != null) {
             System.out.println("ERROR! You need to cast/drop a scroll from your inventory.");
         }
         else {
             System.out.println("You will use your vast powers to conjure 1 of 6 spell scrolls.");
             result = DICE_ROLL.nextInt(6);
-
             if(result == 0) {
                 scrollName = "Fireball";
                 SPELL_SLOT[0] = scrollName;
