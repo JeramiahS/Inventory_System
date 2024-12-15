@@ -1,5 +1,5 @@
 /*
- * Rather than doing all of our work in the Main class, I encapsulated the code into this seperate class.
+ * Rather than doing all of our work in the Main class, I encapsulated the code into this separate class.
  * The Main class will create an Inventory object and that object will use the methods within this Inventory class.
  */
 
