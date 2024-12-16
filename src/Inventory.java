@@ -84,7 +84,12 @@ public class Inventory {
                 spellName = null;
                 break;
         }
+        System.out.println("You conjured the spell: " + spellName);
         return spellName;
+    }
+
+    public static void addSpell() {
+        spellSlot[0] = conjureSpell();
     }
 
     public static void addWeapon() {
@@ -138,10 +143,8 @@ public class Inventory {
     }
 
     public static void dropSpell() {
-
-        if(spellSlot[0] == null) {
-            System.out.println("");
-        }
+        spellSlot[0] = null;
+        System.out.println("You've dropped your previously equipped spell");
     }
 
     public static void dropWeapon() {
@@ -153,11 +156,13 @@ public class Inventory {
     }
 
     public static void listSpell() {
+
         if(spellSlot[0] == null) {
             System.out.println("You do not have a spell equipped. Equip one by conjuring a scroll.");
         }
         else {
             System.out.println("You have the " + spellSlot[0] + " scroll equipped.");
+            spellDescriptions.getDescription(spellSlot[0]);
         }
     }
 
