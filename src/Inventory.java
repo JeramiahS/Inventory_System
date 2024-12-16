@@ -56,58 +56,35 @@ public class Inventory {
         }
     }
 
-    public static void addSpell() {
-        String scrollName;
+    public static String conjureSpell() {
         int result;
-
-        if(spellSlot[0] != null) {
-            System.out.println("ERROR! You need to cast/drop a scroll from your inventory.");
+        String spellName;
+        System.out.println("You will use your vast powers to conjure one of six magical spells.");
+        result = diceRoll.nextInt(6);
+        switch (result) {
+            case 0:
+                spellName = "Acid Splash";
+                break;
+            case 1:
+                spellName = "Fireball";
+                break;
+            case 2:
+                spellName = "Fog Cloud";
+                break;
+            case 3:
+                spellName = "Hideous Laughter";
+                break;
+            case 4:
+                spellName = "Mage Armor";
+                break;
+            case 5:
+                spellName = "Vicious Mockery";
+                break;
+            default:
+                spellName = null;
+                break;
         }
-        else {
-            System.out.println("You will use your vast powers to conjure 1 of 6 spell scrolls.");
-            result = diceRoll.nextInt(6);
-            if(result == 0) {
-                scrollName = "Fireball";
-                spellSlot[0] = scrollName;
-                System.out.println();
-                spellDescriptions.getDescription(scrollName);
-            }
-            else if(result == 1) {
-                scrollName = "Vicious Mockery";
-                spellSlot[0] = scrollName;
-                System.out.println("You conjure the scroll to cast " + scrollName + ".");
-                System.out.print("On successful cast: Demoralize a creature with a profoundly vile insult," );
-                System.out.println(" causing it to flee.");
-            }
-            else if(result == 2) {
-                scrollName = "Acid Splash";
-                spellSlot[0] = scrollName;
-                System.out.println("You conjure the scroll to cast " + scrollName + ".");
-                System.out.println("On cast: Caustic acid envelops an area. Reacting with almost everything it touches.");
-            }
-            else if(result == 3) {
-                scrollName = "Hideous Laughter";
-                spellSlot[0] = scrollName;
-                System.out.println("You conjure the scroll to cast " + scrollName + ".");
-                System.out.print("On successful cast: You tell a joke so funny the target creature can't help but");
-                System.out.println(" laugh so hard they fall to the ground, unable to defend themselves.");
-            }
-            else if(result == 4) {
-                scrollName = "Fog Cloud";
-                spellSlot[0] = scrollName;
-                System.out.println("You conjure the scroll to cast " + scrollName + ".");
-                System.out.println("On cast: Envelops an area in thick fog, completely obscuring vision.");
-            }
-            else {
-                scrollName = "Mage Armor";
-                spellSlot[0] = scrollName;
-                System.out.println("You conjure the scroll to cast " + scrollName + ".");
-                System.out.print("On cast: Grants you or any ally not wearing armor a spectral armor set.");
-                System.out.println(" Particularly effective against magical attacks.");
-            }
-
-        }
-
+        return spellName;
     }
 
     public static void addWeapon() {
