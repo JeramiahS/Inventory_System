@@ -61,29 +61,17 @@ public class Inventory {
         String spellName;
         System.out.println("You will use your vast powers to conjure one of six magical spells.");
         result = diceRoll.nextInt(6);
-        switch (result) {
-            case 0:
-                spellName = "Acid Splash";
-                break;
-            case 1:
-                spellName = "Fireball";
-                break;
-            case 2:
-                spellName = "Fog Cloud";
-                break;
-            case 3:
-                spellName = "Hideous Laughter";
-                break;
-            case 4:
-                spellName = "Mage Armor";
-                break;
-            case 5:
-                spellName = "Vicious Mockery";
-                break;
-            default:
-                spellName = null;
-                break;
-        }
+
+        spellName = switch (result) {
+            case 0 -> "Acid Splash";
+            case 1 -> "Fireball";
+            case 2 -> "Fog Cloud";
+            case 3 -> "Hideous Laughter";
+            case 4 -> "Mage Armor";
+            case 5 -> "Vicious Mockery";
+            default -> null;
+        };
+
         System.out.println("You conjured the spell: " + spellName);
         return spellName;
     }
@@ -103,7 +91,7 @@ public class Inventory {
         System.out.println("4. Sorcerer's Staff");
     }
 
-    public static void droppConsumable() {
+    public static void dropConsumable() {
         int potionSelector;
         int quantity;
 
@@ -117,7 +105,7 @@ public class Inventory {
 
         if(potionSelector == 0) {
             if(consumableSlots[0] == 0) {
-                System.out.println("ERROR! You don't have any healh potions in your inventory.");
+                System.out.println("ERROR! You don't have any health potions in your inventory.");
             }
             else if(consumableSlots[0] < quantity) {
                 System.out.println("ERROR! You can only drop a maximum of " + consumableSlots[0] + " potion(s)!");
@@ -148,6 +136,18 @@ public class Inventory {
     }
 
     public static void dropWeapon() {
+        int slotSelector = scanner.nextInt();
+        System.out.println("Please select the weapon slot to empty:");
+        System.out.println("0. Weapon Slot 1");
+        System.out.println("1. Weapon Slot 2");
+
+        if(slotSelector == 0) {
+            weaponSlots[0] = null;
+        }
+        else {
+            weaponSlots[1] = null;
+        }
+
 
     }
 

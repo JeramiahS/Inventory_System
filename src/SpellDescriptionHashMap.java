@@ -2,6 +2,7 @@ import java.util.HashMap;
 
 public class SpellDescriptionHashMap {
     private static HashMap<String,String> spellDescriptions;
+
     public SpellDescriptionHashMap() {
         spellDescriptions = new HashMap<>();
         spellDescriptions.put("Acid Splash", "On Cast: Caustic acid envelops an area.");
